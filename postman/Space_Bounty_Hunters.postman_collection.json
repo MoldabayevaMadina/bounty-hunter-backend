@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "Space Bounty Hunters API",
+    "description": "Django + PostgreSQL midterm assignment. Run requests in order.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. List criminals",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Combined filters and sorting",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/?min_reward=5000&armed=true&sort=-reward"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Max reward, crew and escape filters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/?max_reward=15000&has_crew=true&escape_master=false&sort=reward"
+      }
+    },
+    {
+      "name": "4. Criminal details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/1/"
+      }
+    },
+    {
+      "name": "5. All hunt logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/hunts/"
+      }
+    },
+    {
+      "name": "6. Hunt logs for criminal",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/hunts/?criminal_id=1"
+      }
+    },
+    {
+      "name": "7. Create hunt log",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/hunts/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"criminal_id\": 3,\n  \"success\": false,\n  \"notes\": \"Target escaped through an asteroid field.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Created 201\", () => pm.response.to.have.status(201));",
+              "pm.collectionVariables.set(\"hunt_id\", pm.response.json().id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Read created hunt log",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/hunts/{{hunt_id}}/"
+      }
+    },
+    {
+      "name": "9. Update created hunt log",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/hunts/{{hunt_id}}/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"success\": true,\n  \"notes\": \"Captured after pursuit.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "10. Delete created hunt log",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{base_url}}/api/hunts/{{hunt_id}}/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Deleted 204\", () => pm.response.to.have.status(204));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. Invalid criminal ID in POST (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/hunts/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"criminal_id\": 999999,\n  \"success\": false,\n  \"notes\": \"Invalid target\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Bad request 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "12. Invalid armed filter (400)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/?armed=maybe"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Bad request 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "13. Unknown criminal (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/api/criminals/999999/"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Not found 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "hunt_id",
+      "value": "1"
+    }
+  ]
+}
