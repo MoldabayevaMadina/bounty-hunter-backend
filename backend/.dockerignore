@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+staticfiles/
+.env
+.env.*
+.git
+.gitignore
+Dockerfile
+.dockerignore
+*.md
+.vscode/
+.idea/
+db.sqlite3

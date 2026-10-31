@@ -1,0 +1,20 @@
+[
+  {"model": "bounty.wantedcriminal", "pk": 1, "fields": {"name": "Garrick Vohl", "nickname": "Red Comet", "reward": 15000, "last_known_latitude": 12.5, "last_known_longitude": -45.2, "last_known_note": "Seen near the Kessel refuelling station", "difficulty": 8, "armed": true, "has_crew": true, "escape_master": true}},
+  {"model": "bounty.wantedcriminal", "pk": 2, "fields": {"name": "", "nickname": "The Ghost", "reward": 25000, "last_known_latitude": null, "last_known_longitude": null, "last_known_note": "Hiding somewhere in the Outer Rim nebula", "difficulty": 10, "armed": true, "has_crew": false, "escape_master": true}},
+  {"model": "bounty.wantedcriminal", "pk": 3, "fields": {"name": "Mira Talsk", "nickname": "Silver Fox", "reward": 4000, "last_known_latitude": -33.8, "last_known_longitude": 151.2, "last_known_note": "", "difficulty": 3, "armed": false, "has_crew": false, "escape_master": true}},
+  {"model": "bounty.wantedcriminal", "pk": 4, "fields": {"name": "Dorran Kek", "nickname": "Iron Jaw", "reward": 8000, "last_known_latitude": 40.7, "last_known_longitude": -74.0, "last_known_note": "Last spotted at the Orbital Market", "difficulty": 6, "armed": true, "has_crew": true, "escape_master": false}},
+  {"model": "bounty.wantedcriminal", "pk": 5, "fields": {"name": "", "nickname": "Dust Rat", "reward": 1500, "last_known_latitude": null, "last_known_longitude": null, "last_known_note": "Works the asteroid mining colonies", "difficulty": 2, "armed": false, "has_crew": false, "escape_master": false}},
+  {"model": "bounty.wantedcriminal", "pk": 6, "fields": {"name": "Sela Varn", "nickname": "Black Orchid", "reward": 12000, "last_known_latitude": 51.5, "last_known_longitude": -0.1, "last_known_note": "Runs a smuggling crew from Moon Base 7", "difficulty": 7, "armed": false, "has_crew": true, "escape_master": true}},
+  {"model": "bounty.huntlog", "pk": 1, "fields": {"criminal": 1, "success": false, "notes": "Target escaped through an asteroid field.", "created_at": "2026-10-11T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 2, "fields": {"criminal": 1, "success": false, "notes": "Crew ambushed us at the refuelling station.", "created_at": "2026-10-12T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 3, "fields": {"criminal": 2, "success": false, "notes": "Lost the signal inside the nebula.", "created_at": "2026-10-13T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 4, "fields": {"criminal": 3, "success": true, "notes": "Captured at the spaceport cafe without a fight.", "created_at": "2026-10-14T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 5, "fields": {"criminal": 4, "success": false, "notes": "Iron Jaw's crew outnumbered us three to one.", "created_at": "2026-10-15T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 6, "fields": {"criminal": 4, "success": true, "notes": "Caught him alone after the market closed.", "created_at": "2026-10-16T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 7, "fields": {"criminal": 5, "success": true, "notes": "Easy catch in mining colony B-12.", "created_at": "2026-10-17T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 8, "fields": {"criminal": 6, "success": false, "notes": "The smuggling ship jumped to hyperspace.", "created_at": "2026-10-18T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 9, "fields": {"criminal": 2, "success": false, "notes": "Followed a false lead to an empty station.", "created_at": "2026-10-19T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 10, "fields": {"criminal": 6, "success": true, "notes": "Boarded the ship during docking and arrested the captain.", "created_at": "2026-10-20T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 11, "fields": {"criminal": 1, "success": false, "notes": "Engine failure during the chase.", "created_at": "2026-10-21T10:00:00Z"}},
+  {"model": "bounty.huntlog", "pk": 12, "fields": {"criminal": 5, "success": false, "notes": "He slipped away through the ventilation shafts.", "created_at": "2026-10-22T10:00:00Z"}}
+]
